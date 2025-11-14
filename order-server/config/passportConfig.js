@@ -1,6 +1,6 @@
 import passport from "passport"
 import { Strategy as LocalStrategy, Strategy } from "passport-local"
-import Record from "../models/record.js";
+import Record from "../models/user.js";
 import bcrypt from "bcryptjs";
 
 passport.use(new LocalStrategy(async (username, password, done) => {
@@ -23,13 +23,13 @@ passport.use(new LocalStrategy(async (username, password, done) => {
 
 passport.serializeUser((user, done) => {
     console.log('in serializeUser', user)
-    done(null, user.uuid)
+    done(null, user._id)
 });
 
 passport.deserializeUser(async(_id, done) => {
     try{
-        console.log('in deserializeUser', uuid)
-        const user = await User.findById(uuid);
+        console.log('in deserializeUser', _id)
+        const user = await User.findById(_id);
         done(null, user);
     } catch (error) {
         done(error);

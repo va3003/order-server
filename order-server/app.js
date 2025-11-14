@@ -15,7 +15,9 @@ console.log('env in app: ', process.env.NODE_ENV)
 
 const corsOption = { 
     origin: ["http://localhost:3001","http://localhost:8080"],
-    credentials: true,
+    // credentials: true,
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    // allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
 app.use(cors(corsOption));
@@ -33,7 +35,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 //Routes
-
 app.use("/api/auth",authRoutes);
 
 

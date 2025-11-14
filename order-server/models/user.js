@@ -6,6 +6,11 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
     email: {
         type: String,
         required: true,
@@ -28,6 +33,6 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 })
-
-const Record = mongoose.model("Record", userSchema);
-export default Record;
+console.log("saving user");
+const User = mongoose.model("User", userSchema);
+export default User;

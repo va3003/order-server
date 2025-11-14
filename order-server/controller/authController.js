@@ -1,4 +1,4 @@
-import Record from "../models/record.js";
+import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import passport from "passport-local"
 import speakeasy from "speakeasy";
@@ -8,9 +8,10 @@ import jwt from "jsonwebtoken";
 export const register = async (req, res) => {
 
     try {
-        const {userId, email, password, firstName, lastName, role } = req.body;
+        const {userId, username, email, password, firstName, lastName, role } = req.body;
+        console.log("Trying to register : ", email);
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new Record({ userId, email, password: hashedPassword, firstName, lastName, role });
+        const newUser = new User({ userId, username, email, password: hashedPassword, firstName, lastName, role });
         await newUser.save();
         res.status(201).json({ message: "Record created successfully" });
     } catch (error) {
@@ -21,7 +22,7 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        console.log("The authenticated user is : ", req.user);
+        console.log("The authenticated user is : ", req.user.username);
         res.status(200).json({
             message: "User logged in successfully",
             username: req.user.username,
