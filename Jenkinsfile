@@ -15,7 +15,6 @@ node {
         //only build not working as it skips creation of sub images. hence doing "up" instead of build
         sh 'docker -v'
         sh 'docker compose up -d'
-        sh 'docker logs ${c.id}'
     }
     // stage('Deploy') { 
     //     // Builds images defined in your docker-compose.yml
