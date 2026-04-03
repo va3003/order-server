@@ -14,7 +14,7 @@ const app = express();
 console.log('env in app: ', process.env.NODE_ENV)
 
 const corsOption = { 
-    origin: ["http://localhost:3001","http://localhost:8080"],
+    origin: ["http://localhost:3001"],
     // credentials: true,
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
     // allowedHeaders: ['Content-Type', 'Authorization'],
