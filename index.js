@@ -6,7 +6,7 @@ import dbConnect from "./config/dbConnect.js"
 
 const StartServer = async () => {
     app.listen(PORT, () => {
-        console.log(`Server Listening on port ${PORT}`)
+        console.log(`Order API Server Listening on port ${PORT}`)
     }).on('error', (err) => {
         debug(`Error: ${err}`)
         process.exit(1)
